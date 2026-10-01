@@ -1,0 +1,94 @@
+{
+  "dataset": {
+    "samples": 2000,
+    "features": 8,
+    "test_samples": 400,
+    "train_samples": 1600
+  },
+  "models": [
+    {
+      "Model": "Logistic Regression",
+      "Accuracy": 99.5,
+      "Precision": 99.01,
+      "Recall": 100.0,
+      "F1_Score": 99.5,
+      "ROC_AUC": 99.88
+    },
+    {
+      "Model": "Decision Tree",
+      "Accuracy": 99.5,
+      "Precision": 99.01,
+      "Recall": 100.0,
+      "F1_Score": 99.5,
+      "ROC_AUC": 99.5
+    },
+    {
+      "Model": "Random Forest",
+      "Accuracy": 100.0,
+      "Precision": 100.0,
+      "Recall": 100.0,
+      "F1_Score": 100.0,
+      "ROC_AUC": 100.0
+    },
+    {
+      "Model": "CNN",
+      "Accuracy": 99.75,
+      "Precision": 99.5,
+      "Recall": 100.0,
+      "F1_Score": 99.75,
+      "ROC_AUC": 100.0
+    }
+  ],
+  "confusion_matrices": {
+    "Logistic Regression": [
+      [
+        198,
+        2
+      ],
+      [
+        0,
+        200
+      ]
+    ],
+    "Decision Tree": [
+      [
+        198,
+        2
+      ],
+      [
+        0,
+        200
+      ]
+    ],
+    "Random Forest": [
+      [
+        200,
+        0
+      ],
+      [
+        0,
+        200
+      ]
+    ],
+    "CNN": [
+      [
+        199,
+        1
+      ],
+      [
+        0,
+        200
+      ]
+    ]
+  },
+  "feature_importance": {
+    "Ocean_Depth": 26.72,
+    "Atmospheric_Pressure": 20.47,
+    "Sea_Surface_Temperature": 20.24,
+    "Humidity": 11.62,
+    "Latitude": 7.76,
+    "Proximity_to_Coastline": 6.05,
+    "Vorticity": 4.09,
+    "Wind_Shear": 3.04
+  }
+}

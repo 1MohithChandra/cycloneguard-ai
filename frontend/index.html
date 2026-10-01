@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>CycloneGuard AI</title>
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+</head>
+
+
+<body>
+
+    <!-- =====================================================
+         MAIN APPLICATION
+    ====================================================== -->
+
+    <main class="app-container">
+
+        <!-- BRAND -->
+        <section class="brand-section">
+
+            <div class="logo">
+                🌪️
+            </div>
+
+            <div class="brand-name">
+                CYCLONEGUARD AI
+            </div>
+
+            <h1>
+                Intelligent Cyclone Prediction
+                & Awareness
+            </h1>
+
+            <p class="subtitle">
+                AI-powered cyclone risk analysis,
+                environmental monitoring and
+                disaster awareness.
+            </p>
+
+        </section>
+
+
+        <!-- =================================================
+             LOGIN SECTION
+        ================================================== -->
+
+        <section
+            id="loginSection"
+            class="login-section"
+        >
+
+            <div class="login-card">
+
+                <h2>
+                    Welcome to CycloneGuard AI
+                </h2>
+
+                <p>
+                    Sign in with your Google account
+                    to access the system.
+                </p>
+
+
+                <button
+                    id="googleLogin"
+                    class="google-button"
+                >
+
+                    <span class="google-icon">
+                        G
+                    </span>
+
+                    Continue with Google
+
+                </button>
+
+
+                <p
+                    id="loginMessage"
+                    class="message"
+                ></p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             ROLE SELECTION
+        ================================================== -->
+
+        <section
+            id="roleSection"
+            class="role-section hidden"
+        >
+
+            <div class="user-info">
+
+                <img
+                    id="userPhoto"
+                    class="user-photo"
+                    src=""
+                    alt="User"
+                >
+
+                <div>
+
+                    <h2>
+                        Welcome,
+                        <span id="userName">
+                            User
+                        </span>
+                        👋
+                    </h2>
+
+                    <p id="userEmail"></p>
+
+                </div>
+
+            </div>
+
+
+            <h2 class="select-title">
+                Select your dashboard
+            </h2>
+
+
+            <p class="select-subtitle">
+                Choose the interface you want to access.
+            </p>
+
+
+            <div class="role-grid">
+
+
+                <!-- =========================================
+                     CITIZEN
+                ========================================== -->
+
+                <button
+                    class="role-card citizen-card"
+                    data-role="citizen"
+                >
+
+                    <div class="role-icon">
+                        👤
+                    </div>
+
+                    <h3>
+                        Citizen
+                    </h3>
+
+                    <p>
+                        Check your location-based
+                        cyclone risk and safety guidance.
+                    </p>
+
+                    <span class="role-button">
+                        Enter Dashboard →
+                    </span>
+
+                </button>
+
+
+                <!-- =========================================
+                     OFFICIAL
+                ========================================== -->
+
+                <button
+                    class="role-card official-card"
+                    data-role="official"
+                >
+
+                    <div class="role-icon">
+                        🏛️
+                    </div>
+
+                    <h3>
+                        Official
+                    </h3>
+
+                    <p>
+                        Monitor cyclone risks,
+                        environmental conditions and alerts.
+                    </p>
+
+                    <span class="role-button">
+                        Enter Dashboard →
+                    </span>
+
+                </button>
+
+
+                <!-- =========================================
+                     RESEARCHER
+                ========================================== -->
+
+                <button
+                    class="role-card researcher-card"
+                    data-role="researcher"
+                >
+
+                    <div class="role-icon">
+                        🔬
+                    </div>
+
+                    <h3>
+                        Researcher
+                    </h3>
+
+                    <p>
+                        Explore datasets, ML models,
+                        results and research information.
+                    </p>
+
+                    <span class="role-button">
+                        Enter Dashboard →
+                    </span>
+
+                </button>
+
+
+            </div>
+
+
+            <!-- LOGOUT -->
+
+            <button
+                id="logout"
+                class="logout-button"
+            >
+                Sign out
+            </button>
+
+        </section>
+
+
+        <!-- =================================================
+             SYSTEM INFORMATION
+        ================================================== -->
+
+        <section class="system-info">
+
+            <div class="status-dot"></div>
+
+            <span>
+                CycloneGuard AI System Online
+            </span>
+
+        </section>
+
+
+        <footer>
+
+            <p>
+                © <span id="currentYear"></span>
+                CycloneGuard AI
+            </p>
+
+            <p>
+                AI-powered disaster awareness system
+            </p>
+
+        </footer>
+
+    </main>
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
+    <script
+        type="module"
+        src="js/app.js"
+    ></script>
+
+</body>
+
+</html>

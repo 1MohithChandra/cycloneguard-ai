@@ -1,0 +1,2 @@
+Model,Accuracy,Precision,Recall,F1_Score,ROC_AUC
+CNN,0.9975,0.995,1.0,0.9975,1.0

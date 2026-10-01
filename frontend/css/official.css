@@ -1,0 +1,449 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #06111f;
+
+    color: white;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    line-height: 1.6;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.official-header {
+    height: 70px;
+
+    padding: 0 6%;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    background: #071522;
+
+    border-bottom: 1px solid #193047;
+}
+
+.logo {
+    font-size: 22px;
+
+    font-weight: bold;
+}
+
+.logo span {
+    color: #31c5ff;
+}
+
+.header-title {
+    color: #9bb0c4;
+
+    font-size: 14px;
+}
+
+
+/* =========================
+   CONTAINER
+========================= */
+
+.official-container {
+    width: 90%;
+
+    max-width: 1250px;
+
+    margin: auto;
+
+    padding: 50px 0;
+}
+
+
+/* =========================
+   DASHBOARD HEADER
+========================= */
+
+.dashboard-header {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 30px;
+
+    margin-bottom: 35px;
+}
+
+.section-label {
+    color: #31c5ff;
+
+    font-size: 11px;
+
+    letter-spacing: 2px;
+
+    font-weight: bold;
+}
+
+.dashboard-header h1 {
+    font-size: 38px;
+
+    margin: 8px 0;
+}
+
+.dashboard-header p:last-child {
+    color: #8fa5b8;
+
+    font-size: 14px;
+}
+
+
+/* =========================
+   LOGOUT
+========================= */
+
+.logout-button {
+    border: 1px solid #31495d;
+
+    background: #0b1c2c;
+
+    color: #d8e1e8;
+
+    padding: 11px 20px;
+
+    border-radius: 9px;
+
+    cursor: pointer;
+
+    font-weight: bold;
+
+    transition: 0.2s;
+}
+
+.logout-button:hover {
+    background: #172d40;
+
+    border-color: #31c5ff;
+}
+
+
+/* =========================
+   STATS
+========================= */
+
+.stats {
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 18px;
+
+    margin-bottom: 22px;
+}
+
+.stat-card {
+    background: #0b1c2c;
+
+    border: 1px solid #193047;
+
+    border-radius: 16px;
+
+    padding: 22px;
+}
+
+.stat-card > span {
+    font-size: 28px;
+}
+
+.stat-card h3 {
+    font-size: 28px;
+
+    margin-top: 8px;
+}
+
+.stat-card p {
+    color: #7890a5;
+
+    font-size: 13px;
+}
+
+
+/* =========================
+   PANEL
+========================= */
+
+.panel {
+    background: #0b1c2c;
+
+    border: 1px solid #193047;
+
+    border-radius: 17px;
+
+    padding: 28px;
+
+    margin-bottom: 22px;
+}
+
+.panel h2 {
+    font-size: 22px;
+
+    margin: 5px 0 20px;
+}
+
+.panel-header {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+}
+
+
+/* =========================
+   MAP
+========================= */
+
+.map-placeholder {
+    min-height: 350px;
+
+    background:
+        linear-gradient(
+            rgba(7, 21, 34, 0.9),
+            rgba(7, 21, 34, 0.9)
+        ),
+        repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 39px,
+            #193047 40px
+        ),
+        repeating-linear-gradient(
+            90deg,
+            transparent,
+            transparent 39px,
+            #193047 40px
+        );
+
+    border: 1px dashed #31506a;
+
+    border-radius: 14px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+}
+
+.map-placeholder > div {
+    font-size: 55px;
+
+    margin-bottom: 10px;
+}
+
+.map-placeholder h3 {
+    font-size: 20px;
+}
+
+.map-placeholder p {
+    color: #7890a5;
+
+    font-size: 13px;
+}
+
+
+/* =========================
+   TABLE
+========================= */
+
+.environment-table-wrapper {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+
+    border-collapse: collapse;
+}
+
+th,
+td {
+    text-align: left;
+
+    padding: 15px;
+
+    border-bottom: 1px solid #193047;
+}
+
+th {
+    color: #31c5ff;
+
+    font-size: 12px;
+
+    letter-spacing: 1px;
+}
+
+td {
+    color: #b9c8d4;
+
+    font-size: 13px;
+}
+
+tbody tr:hover {
+    background: #0e2335;
+}
+
+
+/* =========================
+   SATELLITE
+========================= */
+
+.satellite-panel {
+    min-height: 230px;
+
+    background: #071522;
+
+    border: 1px dashed #31506a;
+
+    border-radius: 14px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+}
+
+.satellite-icon {
+    font-size: 50px;
+}
+
+.satellite-panel h3 {
+    margin: 10px 0;
+}
+
+.satellite-panel p {
+    color: #7890a5;
+
+    font-size: 13px;
+}
+
+
+/* =========================
+   ALERTS
+========================= */
+
+.alerts-container {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 10px;
+}
+
+.alert-item {
+    display: flex;
+
+    gap: 15px;
+
+    align-items: center;
+
+    padding: 17px;
+
+    background: #071522;
+
+    border: 1px solid #193047;
+
+    border-radius: 12px;
+}
+
+.alert-item > span {
+    font-size: 25px;
+}
+
+.alert-item strong {
+    font-size: 14px;
+}
+
+.alert-item p {
+    color: #7890a5;
+
+    font-size: 12px;
+
+    margin-top: 3px;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    text-align: center;
+
+    padding: 30px;
+
+    border-top: 1px solid #193047;
+
+    color: #667f93;
+
+    font-size: 12px;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 900px) {
+
+    .stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+
+@media (max-width: 650px) {
+
+    .official-container {
+        width: 92%;
+
+        padding: 35px 0;
+    }
+
+    .dashboard-header {
+        flex-direction: column;
+
+        align-items: flex-start;
+    }
+
+    .dashboard-header h1 {
+        font-size: 30px;
+    }
+
+    .stats {
+        grid-template-columns: 1fr;
+    }
+
+    .panel {
+        padding: 20px;
+    }
+
+}

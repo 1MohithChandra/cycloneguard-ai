@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>CycloneGuard AI - Citizen</title>
+
+    <link
+        rel="stylesheet"
+        href="css/citizen.css"
+    >
+
+    <!-- Leaflet Map CSS -->
+    <link
+        rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIINfQ3w7xFQ4C4p9Y7f6m0p9Yf6xX6KxXw="
+        crossorigin=""
+    >
+
+    <style>
+
+        /* =========================================================
+           LIVE RISK MONITORING MAP
+           ========================================================= */
+
+        .risk-map-section {
+            margin-top: 24px;
+        }
+
+        .risk-map-container {
+            width: 100%;
+            height: 430px;
+            border-radius: 14px;
+            overflow: hidden;
+            position: relative;
+            border: 1px solid rgba(255,255,255,0.12);
+            background: #dfe7ec;
+        }
+
+        #riskMap {
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .map-instruction {
+            margin-top: 12px;
+            padding: 12px 14px;
+            border-radius: 10px;
+            background: rgba(0, 120, 180, 0.08);
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .map-loading {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .map-loading-dot {
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            background: #2196f3;
+            animation: mapPulse 1.2s infinite;
+        }
+
+        @keyframes mapPulse {
+
+            0% {
+                opacity: 0.3;
+                transform: scale(0.8);
+            }
+
+            50% {
+                opacity: 1;
+                transform: scale(1.15);
+            }
+
+            100% {
+                opacity: 0.3;
+                transform: scale(0.8);
+            }
+
+        }
+
+        .map-popup {
+            min-width: 240px;
+            font-family: Arial, sans-serif;
+        }
+
+        .map-popup-title {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .map-popup-row {
+            margin: 5px 0;
+            font-size: 13px;
+        }
+
+        .map-popup-risk {
+            margin-top: 10px;
+            padding: 9px;
+            border-radius: 8px;
+            background: #f1f5f9;
+        }
+
+        .map-popup-loading {
+            text-align: center;
+            padding: 6px;
+        }
+
+        .map-popup-loading-icon {
+            font-size: 28px;
+            margin-bottom: 7px;
+        }
+
+        .map-popup-footer {
+            margin-top: 10px;
+            padding-top: 8px;
+            border-top: 1px solid #ddd;
+            font-size: 10px;
+            color: #666;
+            text-align: center;
+        }
+
+        .selected-location-button {
+            margin-top: 12px;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- ================= HEADER ================= -->
+
+    <header class="top-header">
+
+        <div class="logo-area">
+
+            <div class="logo-icon">
+                🌪️
+            </div>
+
+            <div>
+
+                <h1>
+                    CycloneGuard AI
+                </h1>
+
+                <p>
+                    Citizen Safety Dashboard
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="header-right">
+
+            <span class="status-dot"></span>
+
+            <span>
+                AI System Online
+            </span>
+
+
+            <button
+                id="logoutButton"
+                class="logout-button"
+            >
+                Logout
+            </button>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="dashboard">
+
+
+        <!-- ================= HERO ================= -->
+
+        <section class="hero-section">
+
+            <div>
+
+                <h2>
+                    Stay Safe. Know Before It Comes.
+                </h2>
+
+                <p>
+
+                    CycloneGuard AI analyzes environmental
+                    conditions to provide cyclone-risk
+                    information and safety guidance.
+
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= LOCATION ================= -->
+
+        <section class="dashboard-card">
+
+            <div class="card-header">
+
+                <div>
+
+                    <h2>
+                        📍 Your Location
+                    </h2>
+
+                    <p>
+
+                        Your location can be used for
+                        geographic cyclone-risk analysis.
+
+                    </p>
+
+                </div>
+
+
+                <button
+                    id="detectLocation"
+                    class="primary-button"
+                >
+                    Detect Location
+                </button>
+
+            </div>
+
+
+            <div class="location-grid">
+
+
+                <div class="location-box">
+
+                    <span>
+                        Latitude
+                    </span>
+
+                    <strong id="latitude">
+                        --
+                    </strong>
+
+                </div>
+
+
+                <div class="location-box">
+
+                    <span>
+                        Longitude
+                    </span>
+
+                    <strong id="longitude">
+                        --
+                    </strong>
+
+                </div>
+
+
+            </div>
+
+
+            <p
+                id="locationStatus"
+                class="status-text"
+            >
+                Location not detected.
+            </p>
+
+
+            <!-- ================= LIVE RISK MAP ================= -->
+
+            <section class="risk-map-section">
+
+                <div class="card-header">
+
+                    <div>
+
+                        <h2>
+                            🗺️ Live Risk Monitoring Map
+                        </h2>
+
+                        <p>
+                            Click anywhere on the map to
+                            analyze that location.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="risk-map-container">
+
+                    <div id="riskMap"></div>
+
+                </div>
+
+
+                <div class="map-instruction">
+
+                    <strong>
+                        📍 Map interaction:
+                    </strong>
+
+                    Click anywhere on the map to place a
+                    marker. CycloneGuard AI will load the
+                    environmental data for that location
+                    and run the preliminary Random Forest
+                    risk prediction.
+
+                </div>
+
+            </section>
+
+
+        </section>
+
+
+
+        <!-- ================= RISK ================= -->
+
+        <section class="dashboard-card risk-card">
+
+            <div class="card-header">
+
+                <div>
+
+                    <h2>
+                        🌪️ Current Cyclone Risk
+                    </h2>
+
+                    <p>
+                        AI-based preliminary risk assessment.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="risk-display">
+
+
+                <div class="risk-circle">
+
+                    <span id="riskLevel">
+                        ANALYZING
+                    </span>
+
+                </div>
+
+
+                <div class="risk-information">
+
+                    <h3>
+                        Estimated Probability
+                    </h3>
+
+
+                    <div
+                        id="riskProbability"
+                        class="probability"
+                    >
+                        --
+                    </div>
+
+
+                    <p>
+
+                        This is an AI assessment based on
+                        available environmental data.
+
+                    </p>
+
+
+                    <p class="warning-text">
+
+                        ⚠️ This is not an official cyclone
+                        warning. Follow government emergency
+                        instructions.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= ENVIRONMENT ================= -->
+
+        <section class="dashboard-card">
+
+            <div class="card-header">
+
+                <div>
+
+                    <h2>
+                        🌡️ Environmental Conditions
+                    </h2>
+
+                    <p>
+
+                        Environmental variables used for
+                        cyclone analysis.
+
+                    </p>
+
+                </div>
+
+
+                <span
+                    id="dataStatus"
+                    class="data-status"
+                >
+                    Loading...
+                </span>
+
+            </div>
+
+
+            <div class="environment-grid">
+
+
+                <div class="environment-box">
+
+                    <span>
+                        Sea Surface Temperature
+                    </span>
+
+                    <strong id="sst">
+                        --
+                    </strong>
+
+                </div>
+
+
+                <div class="environment-box">
+
+                    <span>
+                        Atmospheric Pressure
+                    </span>
+
+                    <strong id="pressure">
+                        --
+                    </strong>
+
+                </div>
+
+
+                <div class="environment-box">
+
+                    <span>
+                        Humidity
+                    </span>
+
+                    <strong id="humidity">
+                        --
+                    </strong>
+
+                </div>
+
+
+                <div class="environment-box">
+
+                    <span>
+                        Wind Shear
+                    </span>
+
+                    <strong id="windShear">
+                        --
+                    </strong>
+
+                </div>
+
+
+                <div class="environment-box">
+
+                    <span>
+                        Vorticity
+                    </span>
+
+                    <strong id="vorticity">
+                        --
+                    </strong>
+
+                </div>
+
+
+                <div class="environment-box">
+
+                    <span>
+                        Ocean Depth
+                    </span>
+
+                    <strong id="oceanDepth">
+                        --
+                    </strong>
+
+                </div>
+
+
+                <div class="environment-box">
+
+                    <span>
+                        Distance to Coast
+                    </span>
+
+                    <strong id="coastDistance">
+                        --
+                    </strong>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= SATELLITE ================= -->
+
+        <section class="dashboard-card">
+
+            <div class="card-header">
+
+                <div>
+
+                    <h2>
+                        🛰️ Satellite Analysis
+                    </h2>
+
+                    <p>
+
+                        Satellite imagery analysis will be
+                        integrated into the AI prediction
+                        pipeline.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="satellite-placeholder">
+
+                <div class="satellite-icon">
+                    🛰️
+                </div>
+
+                <h3>
+                    Satellite Analysis
+                </h3>
+
+                <p>
+
+                    CNN-based satellite image analysis
+                    module will be connected here.
+
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= AI ASSISTANT ================= -->
+
+        <section class="dashboard-card ai-card">
+
+            <div class="card-header">
+
+                <div>
+
+                    <h2>
+                        🤖 AI Disaster Assistant
+                    </h2>
+
+                    <p>
+                        Ask questions by typing or speaking.
+                    </p>
+
+                </div>
+
+
+                <div class="voice-indicator">
+                    🎤 Voice Enabled
+                </div>
+
+            </div>
+
+
+            <!-- CHAT -->
+
+            <div
+                id="chatMessages"
+                class="chat-messages"
+            >
+
+                <div class="chat-message ai">
+
+                    Hello! I can help you understand
+                    cyclone-risk information and provide
+                    safety guidance.
+
+                    <br>
+                    <br>
+
+                    You can type or use the 🎤 microphone
+                    to ask me questions.
+
+                </div>
+
+            </div>
+
+
+            <!-- VOICE STATUS -->
+
+            <div
+                id="voiceStatus"
+                class="voice-status"
+            >
+                Voice assistant ready.
+            </div>
+
+
+            <!-- INPUT -->
+
+            <div class="chat-input-area">
+
+
+                <button
+                    id="voiceButton"
+                    class="voice-button"
+                    title="Speak to AI"
+                    type="button"
+                >
+                    🎤
+                </button>
+
+
+                <input
+                    type="text"
+                    id="chatInput"
+                    placeholder="Ask about cyclone risk..."
+                    autocomplete="off"
+                >
+
+
+                <button
+                    id="sendMessage"
+                    class="send-button"
+                    type="button"
+                >
+                    Send
+                </button>
+
+
+            </div>
+
+
+            <!-- QUICK QUESTIONS -->
+
+            <div class="quick-questions">
+
+                <p>
+                    Try asking:
+                </p>
+
+
+                <button
+                    class="quick-question"
+                    data-question="Is there a cyclone today?"
+                >
+                    🌪️ Is there a cyclone today?
+                </button>
+
+
+                <button
+                    class="quick-question"
+                    data-question="What is the cyclone risk in my area?"
+                >
+                    📍 What is my area risk?
+                </button>
+
+
+                <button
+                    class="quick-question"
+                    data-question="What are the current environmental conditions?"
+                >
+                    🌡️ Environmental conditions
+                </button>
+
+
+                <button
+                    class="quick-question"
+                    data-question="What should I do if a cyclone is coming?"
+                >
+                    🛡️ What should I do?
+                </button>
+
+
+                <button
+                    class="quick-question"
+                    data-question="What should I keep in an emergency kit?"
+                >
+                    🎒 Emergency kit
+                </button>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= PREPAREDNESS ================= -->
+
+        <section class="dashboard-card">
+
+            <div class="card-header">
+
+                <div>
+
+                    <h2>
+                        🎒 Cyclone Preparedness
+                    </h2>
+
+                    <p>
+
+                        Basic preparation steps for severe
+                        weather.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="preparedness-grid">
+
+
+                <div class="prep-box">
+
+                    <span>
+                        💧
+                    </span>
+
+                    <h3>
+                        Water
+                    </h3>
+
+                    <p>
+
+                        Keep sufficient drinking water
+                        available.
+
+                    </p>
+
+                </div>
+
+
+                <div class="prep-box">
+
+                    <span>
+                        🔦
+                    </span>
+
+                    <h3>
+                        Flashlight
+                    </h3>
+
+                    <p>
+
+                        Keep a flashlight and spare batteries
+                        ready.
+
+                    </p>
+
+                </div>
+
+
+                <div class="prep-box">
+
+                    <span>
+                        💊
+                    </span>
+
+                    <h3>
+                        Medicines
+                    </h3>
+
+                    <p>
+
+                        Keep essential medicines and
+                        first-aid supplies.
+
+                    </p>
+
+                </div>
+
+
+                <div class="prep-box">
+
+                    <span>
+                        📱
+                    </span>
+
+                    <h3>
+                        Communication
+                    </h3>
+
+                    <p>
+
+                        Keep your phone and power bank charged.
+
+                    </p>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <p>
+
+            CycloneGuard AI ©
+            <span id="currentYear"></span>
+
+        </p>
+
+        <p>
+
+            AI-generated risk information should not replace
+            official emergency warnings.
+
+        </p>
+
+    </footer>
+
+
+
+    <!-- ================= LEAFLET ================= -->
+
+    <script
+        src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+        crossorigin=""
+    ></script>
+
+
+    <!-- ================= PROJECT JAVASCRIPT ================= -->
+
+    <script src="js/citizen.js"></script>
+
+
+</body>
+
+</html>

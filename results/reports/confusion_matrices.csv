@@ -1,0 +1,5 @@
+Model,True_Negative,False_Positive,False_Negative,True_Positive
+Logistic Regression,198,2,0,200
+Decision Tree,198,2,0,200
+Random Forest,200,0,0,200
+CNN,199,1,0,200

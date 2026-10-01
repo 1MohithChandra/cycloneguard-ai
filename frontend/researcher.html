@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        CycloneGuard AI - Research Dashboard
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="css/researcher.css"
+    >
+
+</head>
+
+
+<body>
+
+
+<header class="research-header">
+
+    <div class="logo">
+        🔬 CycloneGuard <span>AI</span>
+    </div>
+
+    <div>
+        Research Dashboard
+    </div>
+
+</header>
+
+
+<main class="research-container">
+
+
+    <!-- ==========================================
+         DASHBOARD HEADER
+    =========================================== -->
+
+    <section class="research-title">
+
+        <div>
+
+            <p class="section-label">
+                RESEARCH & DEVELOPMENT
+            </p>
+
+            <h1>
+                Cyclone Prediction Research
+            </h1>
+
+            <p>
+                Machine learning, environmental data
+                and model-based cyclone analysis.
+            </p>
+
+            <span id="researcherEmail">
+                Loading researcher...
+            </span>
+
+        </div>
+
+
+        <button
+            id="logout"
+            class="logout-button"
+        >
+            Logout
+        </button>
+
+    </section>
+
+
+
+    <!-- ==========================================
+         RESEARCH STATISTICS
+    =========================================== -->
+
+    <section class="stats">
+
+
+        <div class="stat-card">
+
+            <span>
+                📊
+            </span>
+
+            <h3>
+                2,000
+            </h3>
+
+            <p>
+                Dataset Samples
+            </p>
+
+        </div>
+
+
+
+        <div class="stat-card">
+
+            <span>
+                🔢
+            </span>
+
+            <h3>
+                8
+            </h3>
+
+            <p>
+                Input Features
+            </p>
+
+        </div>
+
+
+
+        <div class="stat-card">
+
+            <span>
+                🤖
+            </span>
+
+            <h3>
+                4
+            </h3>
+
+            <p>
+                ML Models
+            </p>
+
+        </div>
+
+
+
+        <div class="stat-card">
+
+            <span>
+                🧠
+            </span>
+
+            <h3>
+                CNN
+            </h3>
+
+            <p>
+                Environmental Analysis
+            </p>
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- ==========================================
+         DATASET
+    =========================================== -->
+
+    <section class="panel">
+
+        <p class="section-label">
+            DATASET
+        </p>
+
+        <h2>
+            📊 Cyclone Prediction Dataset
+        </h2>
+
+        <p class="panel-description">
+            Environmental and geographical variables
+            used as inputs for cyclone classification.
+        </p>
+
+
+
+        <div class="feature-grid">
+
+
+            <div class="feature-card">
+
+                <span>
+                    01
+                </span>
+
+                <strong>
+                    Sea Surface Temperature
+                </strong>
+
+            </div>
+
+
+
+            <div class="feature-card">
+
+                <span>
+                    02
+                </span>
+
+                <strong>
+                    Atmospheric Pressure
+                </strong>
+
+            </div>
+
+
+
+            <div class="feature-card">
+
+                <span>
+                    03
+                </span>
+
+                <strong>
+                    Humidity
+                </strong>
+
+            </div>
+
+
+
+            <div class="feature-card">
+
+                <span>
+                    04
+                </span>
+
+                <strong>
+                    Wind Shear
+                </strong>
+
+            </div>
+
+
+
+            <div class="feature-card">
+
+                <span>
+                    05
+                </span>
+
+                <strong>
+                    Vorticity
+                </strong>
+
+            </div>
+
+
+
+            <div class="feature-card">
+
+                <span>
+                    06
+                </span>
+
+                <strong>
+                    Latitude
+                </strong>
+
+            </div>
+
+
+
+            <div class="feature-card">
+
+                <span>
+                    07
+                </span>
+
+                <strong>
+                    Ocean Depth
+                </strong>
+
+            </div>
+
+
+
+            <div class="feature-card">
+
+                <span>
+                    08
+                </span>
+
+                <strong>
+                    Proximity to Coastline
+                </strong>
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- TARGET -->
+
+        <div class="target-box">
+
+            <span>
+                TARGET VARIABLE
+            </span>
+
+            <strong>
+                Cyclone
+            </strong>
+
+            <p>
+                Binary classification:
+                0 = No Cyclone,
+                1 = Cyclone
+            </p>
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- ==========================================
+         MACHINE LEARNING MODELS
+    =========================================== -->
+
+    <section class="panel">
+
+        <p class="section-label">
+            MACHINE LEARNING
+        </p>
+
+        <h2>
+            🤖 Model Performance
+        </h2>
+
+        <p class="panel-description">
+            Performance comparison of the classification
+            models used in the cyclone prediction pipeline.
+        </p>
+
+
+        <div class="table-wrapper">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            Model
+                        </th>
+
+                        <th>
+                            Accuracy
+                        </th>
+
+                        <th>
+                            Precision
+                        </th>
+
+                        <th>
+                            Recall
+                        </th>
+
+                        <th>
+                            F1 Score
+                        </th>
+
+                        <th>
+                            ROC-AUC
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody id="modelResults">
+
+
+                    <tr>
+
+                        <td>
+                            Logistic Regression
+                        </td>
+
+                        <td>
+                            --
+                        </td>
+
+                        <td>
+                            --
+                        </td>
+
+                        <td>
+                            --
+                        </td>
+
+                        <td>
+                            --
+                        </td>
+
+                        <td>
+                            --
+                        </td>
+
+                    </tr>
+
+
+
+                    <tr>
+
+                        <td>
+                            Decision Tree
+                        </td>
+
+                        <td>
+                            --
+                        </td>
+
+                        <td>
+                            --
+                        </td>
+
+                        <td>
+                            --
+                        </td>
+
+                        <td>
+                            --
+                        </td>
+
+                        <td>
+                            --
+                        </td>
+
+                    </tr>
+
+
+
+                    <tr>
+
+                        <td>
+                            Random Forest
+                        </td>
+
+                        <td>
+                            --
+                        </td>
+
+                        <td>
+                            --
+                        </td>
+
+                        <td>
+                            --
+                        </td>
+
+                        <td>
+                            --
+                        </td>
+
+                        <td>
+                            --
+                        </td>
+
+                    </tr>
+
+
+
+                    <tr>
+
+                        <td>
+                            CNN
+                        </td>
+
+                        <td>
+                            --
+                        </td>
+
+                        <td>
+                            --
+                        </td>
+
+                        <td>
+                            --
+                        </td>
+
+                        <td>
+                            --
+                        </td>
+
+                        <td>
+                            --
+                        </td>
+
+                    </tr>
+
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ==========================================
+         LIVE MODEL PREDICTIONS
+    =========================================== -->
+
+    <section class="panel">
+
+        <p class="section-label">
+            LIVE MODEL ANALYSIS
+        </p>
+
+        <h2>
+            📡 Live Model Predictions
+        </h2>
+
+        <p class="panel-description">
+            Current environmental conditions are
+            processed through the Random Forest and
+            CNN prediction models.
+        </p>
+
+
+        <div class="live-model-grid">
+
+
+            <!-- RANDOM FOREST -->
+
+            <div class="live-model-card">
+
+                <div class="model-icon">
+                    🌲
+                </div>
+
+                <h3>
+                    Random Forest
+                </h3>
+
+                <p>
+                    Environmental classification model
+                </p>
+
+
+                <div class="prediction-item">
+
+                    <span>
+                        Cyclone Probability
+                    </span>
+
+                    <strong id="rfProbability">
+                        --%
+                    </strong>
+
+                </div>
+
+
+                <div class="prediction-item">
+
+                    <span>
+                        No-Cyclone Probability
+                    </span>
+
+                    <strong id="rfNoCycloneProbability">
+                        --%
+                    </strong>
+
+                </div>
+
+
+                <div class="prediction-item">
+
+                    <span>
+                        Risk Level
+                    </span>
+
+                    <strong id="rfRiskLevel">
+                        --
+                    </strong>
+
+                </div>
+
+
+                <div class="prediction-item">
+
+                    <span>
+                        Prediction
+                    </span>
+
+                    <strong id="rfPrediction">
+                        --
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- CNN -->
+
+            <div class="live-model-card">
+
+                <div class="model-icon">
+                    🧠
+                </div>
+
+                <h3>
+                    CNN
+                </h3>
+
+                <p>
+                    Conv1D environmental feature model
+                </p>
+
+
+                <div class="prediction-item">
+
+                    <span>
+                        Cyclone Probability
+                    </span>
+
+                    <strong id="cnnProbability">
+                        --%
+                    </strong>
+
+                </div>
+
+
+                <div class="prediction-item">
+
+                    <span>
+                        No-Cyclone Probability
+                    </span>
+
+                    <strong id="cnnNoCycloneProbability">
+                        --%
+                    </strong>
+
+                </div>
+
+
+                <div class="prediction-item">
+
+                    <span>
+                        Risk Level
+                    </span>
+
+                    <strong id="cnnRiskLevel">
+                        --
+                    </strong>
+
+                </div>
+
+
+                <div class="prediction-item">
+
+                    <span>
+                        Prediction
+                    </span>
+
+                    <strong id="cnnPrediction">
+                        --
+                    </strong>
+
+                </div>
+
+
+                <div class="cnn-status">
+
+                    CNN MODULE
+
+                    <span id="cnnStatus">
+                        Loading...
+                    </span>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- LIVE LOCATION -->
+
+        <div class="live-location">
+
+            <span>
+                📍 Current Analysis Location
+            </span>
+
+            <strong id="researchLocation">
+                Loading location...
+            </strong>
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- ==========================================
+         MODEL PIPELINE
+    =========================================== -->
+
+    <section class="panel">
+
+        <p class="section-label">
+            MODEL PIPELINE
+        </p>
+
+        <h2>
+            ⚙️ Machine Learning Pipeline
+        </h2>
+
+
+        <div class="pipeline">
+
+
+            <div class="pipeline-step">
+
+                <span>
+                    01
+                </span>
+
+                <strong>
+                    Dataset
+                </strong>
+
+                <p>
+                    Environmental cyclone data
+                </p>
+
+            </div>
+
+
+
+            <div class="pipeline-arrow">
+                →
+            </div>
+
+
+
+            <div class="pipeline-step">
+
+                <span>
+                    02
+                </span>
+
+                <strong>
+                    Preprocessing
+                </strong>
+
+                <p>
+                    Feature selection and splitting
+                </p>
+
+            </div>
+
+
+
+            <div class="pipeline-arrow">
+                →
+            </div>
+
+
+
+            <div class="pipeline-step">
+
+                <span>
+                    03
+                </span>
+
+                <strong>
+                    ML Models
+                </strong>
+
+                <p>
+                    Classification algorithms
+                </p>
+
+            </div>
+
+
+
+            <div class="pipeline-arrow">
+                →
+            </div>
+
+
+
+            <div class="pipeline-step">
+
+                <span>
+                    04
+                </span>
+
+                <strong>
+                    Prediction
+                </strong>
+
+                <p>
+                    Cyclone / No Cyclone
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ==========================================
+         CNN
+    =========================================== -->
+
+    <section class="panel">
+
+        <p class="section-label">
+            DEEP LEARNING
+        </p>
+
+        <h2>
+            🧠 CNN Environmental Analysis
+        </h2>
+
+
+        <div class="cnn-panel">
+
+
+            <div class="cnn-icon">
+                🧠
+            </div>
+
+
+            <h3>
+                CNN Environmental Analysis Module
+            </h3>
+
+
+            <p>
+                A Convolutional Neural Network analyzes
+                environmental and geographical features
+                to estimate cyclone risk.
+            </p>
+
+
+            <div class="cnn-status">
+
+                CNN MODULE
+
+                <span id="cnnStatusBottom">
+                    Loading...
+                </span>
+
+            </div>
+
+
+            <div class="cnn-live-result">
+
+
+                <div>
+
+                    <strong>
+                        Cyclone Probability
+                    </strong>
+
+                    <span id="cnnProbabilityBottom">
+                        --%
+                    </span>
+
+                </div>
+
+
+
+                <div>
+
+                    <strong>
+                        No-Cyclone Probability
+                    </strong>
+
+                    <span id="cnnNoCycloneProbabilityBottom">
+                        --%
+                    </span>
+
+                </div>
+
+
+
+                <div>
+
+                    <strong>
+                        Risk Level
+                    </strong>
+
+                    <span id="cnnRiskLevelBottom">
+                        --
+                    </span>
+
+                </div>
+
+
+
+                <div>
+
+                    <strong>
+                        Prediction
+                    </strong>
+
+                    <span id="cnnPredictionBottom">
+                        --
+                    </span>
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ==========================================
+         RESEARCH NOTES
+    =========================================== -->
+
+    <section class="panel">
+
+        <p class="section-label">
+            RESEARCH INFORMATION
+        </p>
+
+        <h2>
+            📚 Research Notes
+        </h2>
+
+
+        <div class="research-notes">
+
+
+            <div>
+
+                <h3>
+                    Dataset
+                </h3>
+
+                <p>
+                    The current dataset contains
+                    environmental and geographical
+                    variables for binary cyclone
+                    classification.
+                </p>
+
+            </div>
+
+
+
+            <div>
+
+                <h3>
+                    Target
+                </h3>
+
+                <p>
+                    The target variable is Cyclone,
+                    representing cyclone and
+                    non-cyclone conditions.
+                </p>
+
+            </div>
+
+
+
+            <div>
+
+                <h3>
+                    CNN
+                </h3>
+
+                <p>
+                    The current CNN implementation uses
+                    the same environmental feature set
+                    as the cyclone classification pipeline.
+                </p>
+
+            </div>
+
+
+
+            <div>
+
+                <h3>
+                    Future Work
+                </h3>
+
+                <p>
+                    Future development can integrate
+                    satellite imagery and a dedicated
+                    image-based CNN for visual cyclone
+                    pattern analysis.
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+    </section>
+
+
+</main>
+
+
+
+<footer>
+
+    <p>
+        CycloneGuard AI • Research & Development
+    </p>
+
+</footer>
+
+
+
+<script src="js/researcher.js"></script>
+
+
+</body>
+
+</html>

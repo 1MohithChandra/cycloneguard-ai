@@ -1,0 +1,21 @@
+SIH_Final/
+│
+├── backend/
+│   ├── dataset.csv
+│   ├── main.py
+│   ├── preprocessing.py
+│   ├── train_model.py
+│   ├── evaluate_model.py
+│   └── predict.py
+│
+├── models/
+│
+├── results/
+│   ├── graphs/
+│   └── reports/
+│
+├── frontend/
+│
+├── requirements.txt
+├── README.md
+└── .gitignore
