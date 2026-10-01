@@ -19,7 +19,7 @@ from sklearn.metrics import (
 )
 
 ROOT = Path(__file__).resolve().parent
-DATASET = ROOT / "backend" / "dataset.csv"
+DATASET = ROOT /  "dataset.csv"
 MODELS = ROOT / "models"
 REPORTS = ROOT / "results" / "reports"
 GRAPHS = ROOT / "results" / "graphs"
