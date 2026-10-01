@@ -1,1 +1,1 @@
-from backend.voice_server import app
+from voice_server import app
