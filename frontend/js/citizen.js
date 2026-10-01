@@ -89,7 +89,7 @@ const logoutButton =
    ========================================================= */
 
 const BACKEND_URL =
-    "http://127.0.0.1:8000";
+    "https://cycloneguard-aibackend.vercel.app";
 
 const CHAT_ENDPOINT =
     BACKEND_URL + "/api/chat";

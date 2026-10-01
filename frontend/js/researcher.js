@@ -3,7 +3,7 @@
 // Live predictions + evaluation results + graphs
 // ==========================================
 
-const BACKEND_URL = "http://127.0.0.1:8000";
+const BACKEND_URL = "https://cycloneguard-aibackend.vercel.app";
 const RESULTS_URL = "../results/reports/research_results.json";
 
 // ==========================================
