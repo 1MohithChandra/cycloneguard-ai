@@ -38,7 +38,7 @@ if not OPENROUTER_API_KEY:
 # =========================================================
 
 MODEL_PATH = (
-    BASE_DIR.parent
+    BASE_DIR
     / "models"
     / "random_forest.joblib"
 )
@@ -63,13 +63,13 @@ print(
 # =========================================================
 
 CNN_MODEL_PATH = (
-    BASE_DIR.parent
+    BASE_DIR
     / "models"
     / "cnn_model.keras"
 )
 
 CNN_SCALER_PATH = (
-    BASE_DIR.parent
+    BASE_DIR
     / "models"
     / "cnn_scaler.joblib"
 )
